@@ -10,10 +10,10 @@ int main() {
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
-    int tabuleiro [5][5];
+    int tabuleiro [10][10];
 
-    for (int l = 0; l < 5; l++) {
-        for (int c = 0; c < 5; c++) {
+    for (int l = 0; l < 10; l++) {
+        for (int c = 0; c < 10; c++) {
             tabuleiro[l][c] = 0;
         }
     }
@@ -27,23 +27,59 @@ int main() {
     tabuleiro[4][0] = 2;
     tabuleiro[4][1] = 2;
     tabuleiro[4][2] = 2;
+
+    //incremento nivel aventureiro
+
+    //navio 3 diagonal
+     tabuleiro[5][5] = 3;
+    tabuleiro[6][6] = 3;
+    tabuleiro[7][7] = 3;
+
+    //navio 4 diagonal
+     tabuleiro[7][2] = 4;
+    tabuleiro[8][1] = 4;
+    tabuleiro[9][0] = 4;
     
     printf("coordenadas dos navios:\n");
-    for (int l = 0; l < 5; l++) {
-        for (int c = 0; c < 5; c++) {
+    for (int l = 0; l < 10; l++) {
+        for (int c = 0; c < 10; c++) {
             if (tabuleiro [l][c] == 1) {
                 printf ("navio vertical - (%d, %d)\n", l, c);
             }
             else if (tabuleiro [l][c] == 2 ) {
                 printf("navio horizontal - (%d, %d)\n", l, c);
             }
+            else if (tabuleiro [l][c] == 3) {
+                if (l == c ) {
+                    printf ("navio diagonal 1 - (%d, %d)\n", l, c);
+                }
+                else if (l + c == 9) {
+                    printf ("navio diagonal 2 - (%d, %d)\n", l, c);
+
+                } else {
+                    printf ("navio diagonal (outro) - (%d, %d)\n", l, c);
+                }
+            }
         }
     }
+
+
  
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
     // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+    printf ("\n Tabuleiro: \n");
+    for (int l = 0; l < 10; l++) {
+        for (int c = 0; c < 10; c++) {
+            if (tabuleiro [l][c] == 0) {
+                printf ("0");
+            } else {
+                printf ("3");
+            }
+        }
+        printf("\n");
+    }
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
