@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include <stdlib.h>
+
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
@@ -11,6 +13,8 @@ int main() {
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
     int tabuleiro [10][10];
+
+    int habilidade[5][5];
 
     for (int l = 0; l < 10; l++) {
         for (int c = 0; c < 10; c++) {
@@ -85,6 +89,75 @@ int main() {
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
     // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
     // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+
+    //habilidades
+    printf("\n habilidade cone\n");
+
+   //responsavel por zerar a matriz
+    for (int l = 0; l <5; l++) {
+        for (int c = 0; c < 5; c++) {
+            habilidade[l][c] = 0;
+        }
+    }
+
+    for (int l = 0; l < 3; l++) {
+        for (int c = 0; c < 5; c++) {
+            if (c >= 2 - l && c <= 2 + l ) {
+                habilidade[l][c] = 1;
+            }
+        }
+    }
+     //responsavel por exibir a matriz
+    for (int l = 0; l < 5; l++) {
+        for (int c = 0; c < 5; c++) {
+            printf("%d", habilidade[l][c]);
+        }
+        printf("\n");
+    }
+    //-------------//
+
+    printf("\n habilidade cruz \n");
+
+    for (int l = 0; l <5; l++) {
+        for (int c = 0; c < 5; c++) {
+            habilidade[l][c] = 0;
+        }
+    }
+
+    for (int l = 0; l < 5; l++) {
+        habilidade[2][l] = 1;
+        habilidade[l][2] = 1;
+    }
+    // -----------//
+     for (int l = 0; l < 5; l++) {
+        for (int c = 0; c < 5; c++) {
+            printf("%d", habilidade[l][c]);
+        }
+        printf("\n");
+    }
+
+    printf("\n habilidade octaedro \n");
+
+    for (int l = 0; l <5; l++) {
+        for (int c = 0; c < 5; c++) {
+            habilidade[l][c] = 0;
+        }
+    }
+
+    for (int l = 0; l < 5; l++) {
+        for (int c = 0; c < 5; c++) {
+            if (abs (l - 2) + abs(c - 2) <= 2) {
+                habilidade[l][c] = 1;
+            }
+        }
+    }
+
+    for (int l = 0; l < 5; l++) {
+        for (int c = 0; c < 5; c++ ) {
+            printf("%d", habilidade[l][c]);
+        }
+        printf("\n");
+    }
 
     // Exemplos de exibição das habilidades:
     // Exemplo para habilidade em cone:
